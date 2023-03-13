@@ -1,0 +1,65 @@
+input,
+label {
+  margin: 5px 5px;
+}
+
+.form-group {
+  margin: 0.85rem auto;
+  width: 28rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.form-title {
+  display: block;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: larger;
+  text-decoration: overline underline;
+  text-decoration-color: blueviolet;
+  letter-spacing: 0.1rem;
+  text-shadow: 2px 2px 5px rgb(103, 222, 18);
+}
+
+.form-control {
+  float: left;
+}
+.displayNone {
+  display: none;
+}
+#inputStreet {
+  width: 100%;
+}
+#inputContactName {
+  width: 100%;
+}
+
+#inputCity {
+  width: 50%;
+}
+.contactPhoneNumber {
+  width: 40%;
+}
+.special-label {
+  display: none;
+}
+#inputContactEmail {
+  width: 47%;
+}
+
+#inputState {
+  width: 15%;
+}
+
+#inputZip {
+  width: 28%;
+}
+
+#inputCounty {
+  width: 45%;
+}
+
+#inputCountry {
+  width: 50%;
+}

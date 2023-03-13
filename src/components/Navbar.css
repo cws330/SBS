@@ -1,0 +1,36 @@
+.navbar {
+  background-color: #2a4494;
+  color: #fff;
+}
+.navbar-brand {
+  color: #23ce6b;
+}
+.dropdown-toggle {
+  color: #fff;
+  opacity: 1;
+}
+.show {
+  color: #fff;
+  opacity: 1;
+}
+.nav-link {
+  color: #f6f8ff;
+  opacity: 1;
+}
+.nav-item {
+  color: #fff;
+  opacity: 1;
+}
+a[aria-expanded="true"] {
+  color: #fff;
+  opacity: 1;
+}
+.nav-item :hover {
+  color: #23ce68;
+}
+.dropdown {
+  color: #f6f8ff;
+}
+.dropdown-item .nav-link {
+  color: #122c34;
+}

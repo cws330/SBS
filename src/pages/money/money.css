@@ -1,0 +1,30 @@
+.drawerCounts {
+  display: flex;
+  padding: 1.25rem;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.color1 {
+  border-color: #23ce6b;
+  color: #23ce6b;
+}
+
+.color2 {
+  border-color: #122c34;
+  color: #122c34;
+}
+.color3 {
+  border-color: #224870;
+  color: #224870;
+}
+.drawerCountCard {
+  padding: 0.125rem;
+  margin: 0.125rem;
+  border-style: groove;
+  padding: 0.125rem;
+  margin: 0.125rem;
+}
+.drawerCountCard span {
+  font-size: x-large;
+}

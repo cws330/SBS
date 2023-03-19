@@ -6,7 +6,7 @@ import companies from "../images/building-regular.svg";
 import building from "../images/building.svg";
 import money from "../images/money.svg";
 import { doc, getDoc } from "firebase/firestore";
-import { db } from "../firebaseConfig";
+import { auth, db } from "../firebaseConfig";
 import { companyData, userData } from "../context/commonConst";
 
 function Home() {
@@ -16,25 +16,30 @@ function Home() {
 
   useEffect(
     (navigate) => {
-      async function getData() {
-        const q = doc(db, `companies/${companyData}/users/${userData.uid}`);
+      if (auth.currentUser) {
+        async function getData() {
+          const q = doc(
+            db,
+            `companies/${companyData}/users/${auth?.currentUser?.uid}`
+          );
 
-        const querySnapshot = await getDoc(q);
-        if (querySnapshot.exists()) {
-          if (querySnapshot.data().firstName === undefined) {
-            navigate(`/userProfile/${companyData}/${userData.email}`);
+          const querySnapshot = await getDoc(q);
+          if (querySnapshot.exists()) {
+            if (querySnapshot.data().firstName === undefined) {
+              navigate(`/userProfile/${companyData}/${userData.email}`);
+            } else {
+              setData(querySnapshot.data());
+            }
+            // console.log("Document data:", querySnapshot.data());
+            setDataFetched(true);
           } else {
-            setData(querySnapshot.data());
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
           }
-          // console.log("Document data:", querySnapshot.data());
-          setDataFetched(true);
-        } else {
-          // doc.data() will be undefined in this case
-          console.log("No such document!");
         }
-      }
-      if (!dataFetched) {
-        getData();
+        if (!dataFetched) {
+          getData();
+        }
       }
     },
     [dataFetched]

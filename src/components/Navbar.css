@@ -2,6 +2,9 @@
   background-color: #2a4494;
   color: #fff;
 }
+.navbar-collapse {
+  flex-grow: 0;
+}
 .navbar-brand {
   color: #23ce6b;
 }

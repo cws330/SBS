@@ -13,6 +13,7 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "reactstrap";
+import logo from "../../images/logo192.png";
 import "../Navbar.css";
 class Navigation extends React.Component {
   state = {
@@ -28,14 +29,16 @@ class Navigation extends React.Component {
   render() {
     return (
       <Navbar expand='md'>
-        <NavbarBrand href='/'>SBS</NavbarBrand>
-        <NavbarToggler onClick={this.toggle} />
+        <div>
+          <NavbarBrand href='/'>
+            <img src={logo} alt='logo' style={{ height: 75 }} />
+          </NavbarBrand>
+        </div>
+        <div>
+          <NavbarToggler onClick={this.toggle} />
+        </div>
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className='mr-auto' navbar>
-            <NavItem>
-              <NavLink tag={Link} to='/'></NavLink>
-            </NavItem>
-
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
                 Companies

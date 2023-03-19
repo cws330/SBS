@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
-import About from "./pages/About";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import { AuthContext } from "./context/AuthContext";
@@ -22,6 +21,7 @@ import AddDrawerCount from "./pages/money/AddDrawerCount";
 import AddSafeCount from "./pages/money/AddSafeCount";
 import AddDeposit from "./pages/money/AddDepositCount";
 import MoneyReports from "./pages/money/MoneyReports";
+import { auth } from "./firebaseConfig";
 
 function App() {
   const { currentUser } = useContext(AuthContext);
@@ -39,20 +39,12 @@ function App() {
           path='/'
           element={
             <RequireAuth userLevel={() => CheckUserLevel(2)}>
-              <Home />
+              <Home usersInfo={auth.currentUser} />
             </RequireAuth>
           }
         />
         <Route path='/login' element={<Login />} />
         <Route path='/notAuthorized' element={<NotAuthorized />} />
-        <Route
-          path='/about'
-          element={
-            <RequireAuth userLevel={() => CheckUserLevel(3)}>
-              <About />
-            </RequireAuth>
-          }
-        />
         <Route
           path='/newCompany'
           element={

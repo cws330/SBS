@@ -14,36 +14,29 @@ function Home() {
   const [dataFetched, setDataFetched] = useState(false);
   const [data, setData] = useState({});
 
-  useEffect(
-    (navigate) => {
-      if (auth.currentUser) {
-        async function getData() {
-          const q = doc(
-            db,
-            `companies/${companyData}/users/${auth?.currentUser?.uid}`
-          );
+  async function getData() {
+    const q = doc(
+      db,
+      `companies/${companyData}/users/${auth?.currentUser?.uid}`
+    );
 
-          const querySnapshot = await getDoc(q);
-          if (querySnapshot.exists()) {
-            if (querySnapshot.data().firstName === undefined) {
-              navigate(`/userProfile/${companyData}/${userData.email}`);
-            } else {
-              setData(querySnapshot.data());
-            }
-            // console.log("Document data:", querySnapshot.data());
-            setDataFetched(true);
-          } else {
-            // doc.data() will be undefined in this case
-            console.log("No such document!");
-          }
-        }
-        if (!dataFetched) {
-          getData();
-        }
+    const querySnapshot = await getDoc(q);
+    if (querySnapshot.exists()) {
+      if (querySnapshot.data().firstName === undefined) {
+        navigate(`/userProfile/${companyData}/${userData.email}`);
+      } else {
+        setData(querySnapshot.data());
       }
-    },
-    [dataFetched]
-  );
+      // console.log("Document data:", querySnapshot.data());
+      setDataFetched(true);
+    } else {
+      // doc.data() will be undefined in this case
+      console.log("No such document!");
+    }
+  }
+  if (!dataFetched) {
+    getData();
+  }
 
   const companiesButtons = [
     {
@@ -86,6 +79,7 @@ function Home() {
 
   return (
     <div className='home'>
+      {!dataFetched && getData}
       {data.userLevel === Number(5) && (
         <FlipCard
           icon={companies}
